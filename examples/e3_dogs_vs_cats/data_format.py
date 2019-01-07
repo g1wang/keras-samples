@@ -5,32 +5,29 @@ import shutil
 ori_dataset_dir = 'D:\\all-dataset\\dogs-vs-cats\\train'
 # 小数据及目录
 small_data_dir = 'D:\\all-dataset\\dogs-vs-cats-small'
-os.mkdir(small_data_dir)
-
 # 划分数据集:train|validation|test
 train_dir = os.path.join(small_data_dir, 'train')
-os.mkdir(train_dir)
 validation_dir = os.path.join(small_data_dir, 'validation')
-os.mkdir(validation_dir)
 test_dir = os.path.join(small_data_dir, 'test')
-os.mkdir(test_dir)
-
 # cats dogs train
 train_cats_dir = os.path.join(train_dir, 'cats')
-os.mkdir(train_cats_dir)
 train_dogs_dir = os.path.join(train_dir, 'dogs')
-os.mkdir(train_dogs_dir)
-
 # cats dogs validation
 validation_cats_dir = os.path.join(validation_dir, 'cats')
-os.mkdir(validation_cats_dir)
 validation_dogs_dir = os.path.join(validation_dir, 'dogs')
-os.mkdir(validation_dogs_dir)
-
 # cats dogs test
 test_cats_dir = os.path.join(test_dir, 'cats')
-os.mkdir(test_cats_dir)
 test_dogs_dir = os.path.join(test_dir, 'dogs')
+
+os.mkdir(small_data_dir)
+os.mkdir(train_dir)
+os.mkdir(validation_dir)
+os.mkdir(test_dir)
+os.mkdir(train_cats_dir)
+os.mkdir(train_dogs_dir)
+os.mkdir(validation_cats_dir)
+os.mkdir(validation_dogs_dir)
+os.mkdir(test_cats_dir)
 os.mkdir(test_dogs_dir)
 
 fnames = ['cat.{}.jpg'.format(i) for i in range(0, 1000)]
