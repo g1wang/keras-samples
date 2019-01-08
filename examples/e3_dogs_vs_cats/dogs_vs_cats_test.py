@@ -34,7 +34,8 @@ file_path = 'D:\\all-dataset\\dogs-vs-cats-small\\test\dogs\\dog.1500.jpg'
 img = image.load_img(file_path, target_size=(150, 150))
 x = image.img_to_array(img)
 x = np.expand_dims(x, axis=0)
+x /= 255.
 
-model = models.load_model('dogs_vs_cats_small.h5')
+model = models.load_model('dogs_vs_cats_small_vgg_v3.h5')
 y = model.predict(x)
 print(y)

@@ -62,20 +62,20 @@ validation_datagen = ImageDataGenerator(rescale=1. / 255)
 train_generator = train_datagen.flow_from_directory(
     train_dir,
     target_size=(150, 150),
-    batch_size=32,
+    batch_size=20,
     class_mode='binary')
 
 validation_generator = validation_datagen.flow_from_directory(
     validation_dir,
     target_size=(150, 150),
-    batch_size=32,
+    batch_size=20,
     class_mode='binary')
 
 model = DVCModel()
 # 多GPU
 # from keras.utils import multi_gpu_model
 # model = multi_gpu_model(model,gpus=2)
-history = model.fit_generator(train_generator, steps_per_epoch=100, epochs=30, validation_data=validation_generator,
+history = model.fit_generator(train_generator, steps_per_epoch=100, epochs=10, validation_data=validation_generator,
                               validation_steps=50)
 model.save('dogs_vs_cats_small.h5')
 
