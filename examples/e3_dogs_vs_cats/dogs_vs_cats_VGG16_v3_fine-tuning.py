@@ -38,7 +38,7 @@ def DVCModel():
     model.add(layers.Dropout(0.5))
     model.add(layers.Dense(512, activation=activations.relu))
     model.add(layers.Dense(1, activation=activations.sigmoid))
-    model.compile(loss=losses.binary_crossentropy, optimizer=optimizers.RMSprop(lr=1e-4),
+    model.compile(loss=losses.binary_crossentropy, optimizer=optimizers.RMSprop(lr=1e-5),
                   metrics=['acc'])
     return model
 
@@ -79,7 +79,6 @@ model = DVCModel()
 # from keras.utils import multi_gpu_model
 # model = multi_gpu_model(model,gpus=2)
 #拿训练好的模型微调
-model.load_weights('dogs_vs_cats_small_vgg_v2_weight.h5')
 history = model.fit_generator(train_generator, steps_per_epoch=100, epochs=30, validation_data=validation_generator,
                               validation_steps=50)
 model.save_weights('dogs_vs_cats_small_vgg_v3_weight.h5')
