@@ -78,9 +78,12 @@ model = DVCModel()
 # 多GPU
 # from keras.utils import multi_gpu_model
 # model = multi_gpu_model(model,gpus=2)
+#拿训练好的模型微调
+model.load_weights('dogs_vs_cats_small_vgg_v2_weight.h5')
 history = model.fit_generator(train_generator, steps_per_epoch=100, epochs=30, validation_data=validation_generator,
                               validation_steps=50)
-model.save('dogs_vs_cats_small.h5')
+model.save_weights('dogs_vs_cats_small_vgg_v3_weight.h5')
+model.save('dogs_vs_cats_small_vgg_v3.h5')
 
 import matplotlib.pyplot as plt
 
