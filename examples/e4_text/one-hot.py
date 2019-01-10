@@ -1,11 +1,11 @@
 from keras.preprocessing.text import Tokenizer
 
-samples = ['The is sat on the nat.','The dog ate my homework.']
+samples = ['The sat on the nat a.','The a dog ate my a homework a a.']
 
 #分词器
-tokenizer = Tokenizer(num_words=1000)
+tokenizer = Tokenizer(num_words=4)
 tokenizer.fit_on_texts(samples)
-
+print(tokenizer.word_index)
 sequences = tokenizer.texts_to_sequences(samples)
 
 print(sequences)
