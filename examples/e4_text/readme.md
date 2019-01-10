@@ -14,3 +14,4 @@
 #### 预训练词嵌入
 - GloVe
 - word2vec
+- LSTM 长短期记忆网络
