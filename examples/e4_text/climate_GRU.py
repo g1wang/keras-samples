@@ -83,7 +83,6 @@ test_steps = (len(float_data) - 300001 - lookback) // batch_size
 # 使用GPU
 import tensorflow as tf
 import keras.backend.tensorflow_backend as KTF
-
 KTF.set_session(tf.Session(config=tf.ConfigProto(device_count={'gpu': 0})))
 
 from keras import Sequential

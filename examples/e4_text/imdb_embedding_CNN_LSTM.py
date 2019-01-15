@@ -81,5 +81,11 @@ model.add(Dense(1, activation='sigmoid'))
 model.layers[0].set_weights([embedding_matrix])
 model.layers[0].trainable = False
 model.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=['acc'])
+
+# 使用GPU
+import tensorflow as tf
+import keras.backend.tensorflow_backend as KTF
+KTF.set_session(tf.Session(config=tf.ConfigProto(device_count={'gpu': 0})))
+
 history = model.fit(x_train, y_train, epochs=10, batch_size=32, validation_data=(x_val, y_val))
 model.save_weights('imdb_embedding_weights.h5')
