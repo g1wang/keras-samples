@@ -11,7 +11,7 @@ target_image_path = 'img/protrait.jpg'
 style_reference_image_path = 'img/style_reference_image_path.jpg'
 
 width, height = load_img(target_image_path).size
-img_height = 400
+img_height = 720
 img_width = int(width * img_height / height)
 
 import numpy as np
@@ -82,7 +82,7 @@ def total_variation_loss(x):
 
 # 需最小化的最终损失
 output_dict = dict([(layer.name, layer.output) for layer in model.layers])
-content_layer = 'block5_conv2'
+content_layer = 'block5_conv4'
 style_layers = ['block1_conv1',
                 'block2_conv1',
                 'block3_conv1',
@@ -90,8 +90,8 @@ style_layers = ['block1_conv1',
                 'block5_conv1']
 # 损失分量的加权比重
 total_variation_weight = 1e-4
-style_weight = 1.
-content_weight = 0.05
+style_weight = 0.9
+content_weight = 0.025
 
 loss = K.variable(0.)
 layer_features = output_dict[content_layer]
@@ -152,7 +152,7 @@ x = x.flatten()
 for i in range(iterations):
     print('start ', i)
     start_time = time.time()
-    x, min_val, info = fmin_l_bfgs_b(evaluator.loss, x, fprime=evaluator.grads, maxfun=20)
+    x, min_val, info = fmin_l_bfgs_b(evaluator.loss, x, fprime=evaluator.grads, maxfun=30)
     print('current loss value:', min_val)
     img = x.copy().reshape((img_height, img_width, 3))
     fname = 'neture_style_transfer_VGG19_img/' + result_prefix + '%d.png' % i
