@@ -11,7 +11,7 @@ target_image_path = 'img/protrait.jpg'
 style_reference_image_path = 'img/style_reference_image_path.jpg'
 
 width, height = load_img(target_image_path).size
-img_height = 720
+img_height = 400
 img_width = int(width * img_height / height)
 
 import numpy as np
